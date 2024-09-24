@@ -15,7 +15,7 @@ jobs:
         aws-region: ap-southeast-2
     - name: Create deployment package
       run: |
-        zip -r lambda.zip . -x "*.git*" ".github/*" "example_event.json" "test_lambda_function.py"
+        zip -r lambda.zip . -x "*.git*" ".github/*" "example_event.json" "test_lambda_function.py" "__pycache__/*"
     - name: Deploy to Lambda
       run: |
         aws lambda update-function-code --function-name lambda_test --zip-file fileb://lambda.zip
